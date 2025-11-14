@@ -198,9 +198,11 @@ button:hover {
     border: 1px solid var(--glass-border);
     padding: 18px;
     display: flex;
+    flex-direction: column;
+    /* UBAH dari default ke column */
     gap: 12px;
-    align-items: flex-start;
-    overflow: hidden;
+    overflow-y: auto;
+    /* TAMBAHKAN untuk scrolling */
 }
 
 @media (max-width:900px) {
@@ -211,12 +213,14 @@ button:hover {
 }
 
 .bench {
-    flex: 1;
+    flex: 0 0 80%;
+    /* UBAH: 80% tinggi dari lab-area */
     position: relative;
     border-radius: 12px;
     padding: 12px;
     overflow: hidden;
-    min-height: 500px;
+    min-height: 400px;
+    /* UBAH dari 500px */
     border: 1px solid var(--glass-border);
     z-index: 1;
 }
@@ -247,6 +251,112 @@ button:hover {
         min-height: 400px;
     }
 }
+
+.lab-pretest {
+    flex: 0 0 20%;
+    /* 20% tinggi dari lab-area */
+    background: rgba(102, 126, 234, 0.05);
+    border: 2px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 16px;
+    overflow-y: auto;
+    min-height: 150px;
+}
+
+.lab-pretest-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed rgba(102, 126, 234, 0.3);
+}
+
+.lab-pretest-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-purple);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lab-pretest-badge {
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.lab-question-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+.lab-question-text {
+    color: var(--text-dark);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.lab-question-context {
+    background: rgba(96, 165, 250, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #60a5fa;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-dark);
+    margin-top: 8px;
+}
+
+.lab-pretest::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lab-pretest::-webkit-scrollbar-track {
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 3px;
+}
+
+.lab-pretest::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    border-radius: 3px;
+}
+
+@media (max-width:900px) {
+    .lab-area {
+        flex-direction: column;
+    }
+
+    .bench {
+        flex: 0 0 70%;
+        /* Lebih kecil di mobile */
+        min-height: 350px;
+    }
+
+    .lab-pretest {
+        flex: 0 0 30%;
+        min-height: 200px;
+    }
+
+    .lab-question-text {
+        font-size: 12px;
+    }
+
+    .lab-question-context {
+        font-size: 11px;
+    }
+}
+
+
 
 .beaker {
     position: absolute;

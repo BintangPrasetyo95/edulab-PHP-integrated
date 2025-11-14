@@ -42,6 +42,31 @@
                     <button class="tray-toggle" id="trayToggle">🧪 Alat & Bahan</button>
                     <div class="tray" id="tray"></div>
                 </div>
+
+                <!-- PRE-TEST SOAL DI LAB AREA -->
+                <div class="lab-pretest">
+                    <div class="lab-pretest-header">
+                        <div class="lab-pretest-title">
+                            📝 Sudi Kasus
+                        </div>
+                        <span class="lab-pretest-badge">Asam Basa</span>
+                    </div>
+
+                    <div class="lab-question-card">
+                        <div class="lab-question-text">
+                            <strong>Pertanyaan:</strong><br> <!-- example -->
+                            Seorang petani di desa memiliki tanah dengan pH 5,2 (asam). Ia ingin menetralkan keasaman
+                            tanah tersebut agar cocok untuk menanam sayuran. Bahan apa yang sebaiknya digunakan petani
+                            tersebut, dan mengapa bahan itu efektif untuk menetralkan tanah asam?
+                        </div>
+
+                        <div class="lab-question-context">
+                            <!-- example -->
+                            💡 <strong>Petunjuk:</strong> Pikirkan tentang sifat asam-basa dan bagaimana zat basa dapat
+                            menetralisir asam. Kaitkan dengan bahan-bahan yang tersedia di sekitar desa.
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
 
