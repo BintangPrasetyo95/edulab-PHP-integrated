@@ -470,14 +470,14 @@
 
     <header>
         <div class="header-left">
-            <img src="./assets/images/Logo.png" alt="Logo EduLab" onclick="window.location.href='./beranda-guru.html'">
-            <h1 onclick="window.location.href='./beranda-guru.html'">EduLab - Guru</h1>
+            <img src="./assets/images/Logo.png" alt="Logo EduLab" onclick="window.location.href='./beranda-guru.php'">
+            <h1 onclick="window.location.href='./beranda-guru.php'">EduLab - Guru</h1>
         </div>
         <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
         <nav class="navbar">
-            <a href="./beranda-guru.html" class="normal">Beranda</a>
-            <a href="./penilaian-guru.html" class="normal">Penilaian Individu</a>
-            <a href="./penilaian-kelompok-guru.html" class="active">Penilaian Kelompok</a>
+            <a href="./beranda-guru.php" class="normal">Beranda</a>
+            <a href="./penilaian-guru.php" class="normal">Penilaian Individu</a>
+            <a href="./penilaian-kelompok-guru.php" class="active">Penilaian Kelompok</a>
         </nav>
         <div class="header-right">
             <div class="notification" onclick="toggleNotification()">
@@ -501,12 +501,12 @@
     </header>
     <aside>
         <div class="sidebar-header">
-            <img src="./assets/images/Logo.png" alt="Logo EduLab" onclick="window.location.href='./beranda-guru.html'">
-            <h2 onclick="window.location.href='./beranda-guru.html'">EduLab</h2>
+            <img src="./assets/images/Logo.png" alt="Logo EduLab" onclick="window.location.href='./beranda-guru.php'">
+            <h2 onclick="window.location.href='./beranda-guru.php'">EduLab</h2>
         </div>
 
         <div class="mobile-nav">
-            <div class="nav-item" onclick="window.location.href='./beranda-guru.html'">
+            <div class="nav-item" onclick="window.location.href='./beranda-guru.php'">
                 🏠 Dashboard
             </div>
             <div class="nav-item">
@@ -524,15 +524,15 @@
 
         <div class="level" onclick="toggleLevel(this)"><span class="arrow">▶</span> Manajemen Topik</div>
         <div class="sub-level">
-            <div class="topic" onclick="window.location.href='./beranda-guru.html'">Kelas 10</div>
-            <div class="topic" onclick="window.location.href='./beranda-guru.html'">Kelas 11</div>
-            <div class="topic" onclick="window.location.href='./beranda-guru.html'">Kelas 12</div>
+            <div class="topic" onclick="window.location.href='./beranda-guru.php'">Kelas 10</div>
+            <div class="topic" onclick="window.location.href='./beranda-guru.php'">Kelas 11</div>
+            <div class="topic" onclick="window.location.href='./beranda-guru.php'">Kelas 12</div>
         </div>
 
         <div class="level" onclick="toggleLevel(this)"><span class="arrow">▶</span> Mata Pelajaran</div>
         <div class="sub-level">
-            <div class="topic" onclick="window.location.href='./beranda-guru.html'">Kimia</div>
-            <div class="topic" onclick="window.location.href='./beranda-guru.html'">Fisika</div>
+            <div class="topic" onclick="window.location.href='./beranda-guru.php'">Kimia</div>
+            <div class="topic" onclick="window.location.href='./beranda-guru.php'">Fisika</div>
         </div>
     </aside>
 

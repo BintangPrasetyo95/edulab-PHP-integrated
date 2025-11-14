@@ -46,7 +46,7 @@
         </main>
 
         <aside class="panel right">
-            <button onclick="window.location.href='./start-praktikum.html'">Kembali </button>
+            <button onclick="window.location.href='./start-praktikum.php'">Kembali </button>
             <button id="selesaiBtn">Selesai</button>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px">
                 <h3 style="margin:0">📊 Instrumen</h3>

@@ -81,16 +81,16 @@
 
         <div class="level" onclick="toggleLevel(this)"><span class="arrow">▶</span> Pengenalan</div>
         <div class="sub-level">
-            <div class="topic" onclick="window.location.href='./pengenalan.html?section=alat-laboratorium'">Alat
+            <div class="topic" onclick="window.location.href='./pengenalan.php?section=alat-laboratorium'">Alat
                 Laboratorium</div>
-            <div class="topic" onclick="window.location.href='./pengenalan.html#keselamatan-dasar'">Keselamatan Dasar
+            <div class="topic" onclick="window.location.href='./pengenalan.php#keselamatan-dasar'">Keselamatan Dasar
             </div>
         </div>
 
         <div class="level" onclick="toggleLevel(this)"><span class="arrow">▶</span> Simbol Bahaya</div>
         <div class="sub-level">
-            <div class="topic" onclick="window.location.href='./simbol-bahaya.html'">Simbol-Simbol Bahaya</div>
-            <div class="topic" onclick="window.location.href='./simbol-bahaya.html#panduan-keselamatan'">Panduan Umum
+            <div class="topic" onclick="window.location.href='./simbol-bahaya.php'">Simbol-Simbol Bahaya</div>
+            <div class="topic" onclick="window.location.href='./simbol-bahaya.php#panduan-keselamatan'">Panduan Umum
                 Keselamatan</div>
         </div>
 
