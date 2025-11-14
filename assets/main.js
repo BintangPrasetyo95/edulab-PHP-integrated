@@ -50,10 +50,10 @@ function toggleTopic(element) {
 function changeTopic(topikId) {
     const currentPath = window.location.pathname;
     console.log('Changing topic to:', topikId, 'from:', currentPath);
-    if (currentPath.includes('modul.html')) {
-        window.location.href = `./modul.html?topic=${topikId}`;
+    if (currentPath.includes('modul.php')) {
+        window.location.href = `./modul.php?topic=${topikId}`;
     } else {
-        window.location.href = `./topik.html?topic=${topikId}`;
+        window.location.href = `./topik.php?topic=${topikId}`;
     }
 }
 
@@ -76,7 +76,7 @@ function renderTopicContent() {
         if (topik) break;
     }
 
-    if (window.location.pathname.includes('topik.html') || window.location.pathname.includes('start-praktikum.html') || window.location.pathname.includes('modul.html')) {
+    if (window.location.pathname.includes('topik.php') || window.location.pathname.includes('start-praktikum.php') || window.location.pathname.includes('modul.php')) {
         const levels = document.querySelectorAll('.level');
         levels.forEach(level => {
             level.classList.remove('open');
@@ -131,7 +131,7 @@ function renderTopicContent() {
         }
     }
 
-    if (window.location.pathname.includes('topik.html')) {
+    if (window.location.pathname.includes('topik.php')) {
         if (topik) {
             const topicTitle = document.getElementById('topic-title');
             const topicImage = document.getElementById('topic-image');
@@ -159,10 +159,10 @@ function renderTopicContent() {
             if (quickButtons) {
                 if (topik.id === 'asam-basa') {
                     quickButtons.innerHTML = `
-                        <button class="modul normal" onclick="window.location.href='./modul.html'"><span>📖</span> Modul</button>
-                        <button class="pre-lab normal" onclick="window.location.href='./start-praktikum.html'"><span>📚</span> Pre-Lab</button>
-                        <button class="praktikum normal" onclick="window.location.href='./start-praktikum.html'"><span>🧪</span> Praktikum</button>
-                        <button class="tugas-kelompok normal" onclick="window.location.href='./kelompok.html'"><span>🤝</span> Tugas Kelompok</button>
+                        <button class="modul normal" onclick="window.location.href='./modul.php'"><span>📖</span> Modul</button>
+                        <button class="pre-lab normal" onclick="window.location.href='./start-praktikum.php'"><span>📚</span> Pre-Lab</button>
+                        <button class="praktikum normal" onclick="window.location.href='./start-praktikum.php'"><span>🧪</span> Praktikum</button>
+                        <button class="tugas-kelompok normal" onclick="window.location.href='./kelompok.php'"><span>🤝</span> Tugas Kelompok</button>
                     `;
                 } else {
                     quickButtons.innerHTML = '<div class="coming-soon">COMING SOON</div>';
@@ -234,7 +234,7 @@ function renderProgress() {
                 data[kelas][mp].forEach(topic => {
                     const topicCard = document.createElement('div');
                     topicCard.className = 'topic-card';
-                    topicCard.setAttribute('onclick', `window.location.href = './topik.html?topic=${topic.id}'`);
+                    topicCard.setAttribute('onclick', `window.location.href = './topik.php?topic=${topic.id}'`);
                     topicCard.innerHTML = `
                         <img src="${topic.image}" alt="${topic.title}">
                         <h3>${topic.title}</h3>
@@ -279,7 +279,7 @@ function renderProfile() {
             completed.forEach(topic => {
                 const topicCard = document.createElement('div');
                 topicCard.className = 'topic-card';
-                topicCard.setAttribute('onclick', `window.location.href = './topik.html?topic=${topic.id}'`);
+                topicCard.setAttribute('onclick', `window.location.href = './topik.php?topic=${topic.id}'`);
                 topicCard.innerHTML = `
                     <img src="${topic.image}" alt="${topic.title}">
                     <h3>${topic.title}</h3>
@@ -302,7 +302,7 @@ function renderProfile() {
             inProgress.forEach(topic => {
                 const topicCard = document.createElement('div');
                 topicCard.className = 'topic-card';
-                topicCard.setAttribute('onclick', `window.location.href = './topik.html?topic=${topic.id}'`);
+                topicCard.setAttribute('onclick', `window.location.href = './topik.php?topic=${topic.id}'`);
                 topicCard.innerHTML = `
                     <img src="${topic.image}" alt="${topic.title}">
                     <h3>${topic.title}</h3>
@@ -354,17 +354,17 @@ function highlightActiveNav() {
     navLinks.forEach(link => {
         link.classList.remove('active', 'disabled');
         const href = link.getAttribute('href').toLowerCase().replace(/^\.\//, '');
-        if (href !== 'beranda.html') {
+        if (href !== 'beranda.php') {
             if (topicId !== 'asam-basa') {
                 link.classList.add('disabled');
             } else {
-                if (currentPath.includes('start-praktikum.html') || currentPath.includes('praktikum.html')) {
-                    if (href === 'start-praktikum.html') {
+                if (currentPath.includes('start-praktikum.php') || currentPath.includes('praktikum.php')) {
+                    if (href === 'start-praktikum.php') {
                         link.classList.add('active');
                     }
-                } else if (currentPath.includes('topik.html') && href === 'topik.html') {
+                } else if (currentPath.includes('topik.php') && href === 'topik.php') {
                     link.classList.add('active');
-                } else if (currentPath.includes('modul.html') && href === 'modul.html') {
+                } else if (currentPath.includes('modul.php') && href === 'modul.php') {
                     link.classList.add('active');
                 }
             }
@@ -377,23 +377,23 @@ function highlightActiveNav() {
         item.classList.remove('active', 'disabled');
 
         // Check which page we're on and set active accordingly
-        if (currentPath.includes('beranda.html')) {
+        if (currentPath.includes('beranda.php')) {
             if (item.textContent.trim().includes('Beranda')) {
                 item.classList.add('active');
             }
-        } else if (currentPath.includes('topik.html')) {
+        } else if (currentPath.includes('topik.php')) {
             if (item.textContent.trim().includes('Topik')) {
                 item.classList.add('active');
             }
-        } else if (currentPath.includes('modul.html')) {
+        } else if (currentPath.includes('modul.php')) {
             if (item.textContent.trim().includes('Modul')) {
                 item.classList.add('active');
             }
-        } else if (currentPath.includes('start-praktikum.html') || currentPath.includes('praktikum.html')) {
+        } else if (currentPath.includes('start-praktikum.php') || currentPath.includes('praktikum.php')) {
             if (item.textContent.trim().includes('Praktikum')) {
                 item.classList.add('active');
             }
-        } else if (currentPath.includes('kelompok.html')) {
+        } else if (currentPath.includes('kelompok.php')) {
             if (item.textContent.trim().includes('Tugas Kelompok')) {
                 item.classList.add('active');
             }
@@ -412,7 +412,7 @@ function highlightActiveNav() {
 
 /**
  * Check if page requires a topic parameter
- * Pages that need topic parameter: modul.html, start-praktikum.html, kelompok.html
+ * Pages that need topic parameter: modul.php, start-praktikum.php, kelompok.php
  */
 function checkTopicParameterRequired() {
     const currentPath = window.location.pathname.toLowerCase();
@@ -420,7 +420,7 @@ function checkTopicParameterRequired() {
     const topicId = urlParams.get('topic');
 
     // Pages that require topic parameter
-    const pagesRequiringTopic = ['modul.html', 'start-praktikum.html', 'kelompok.html', 'praktikum.html'];
+    const pagesRequiringTopic = ['modul.php', 'start-praktikum.php', 'kelompok.php', 'praktikum.php'];
 
     const requiresTopic = pagesRequiringTopic.some(page => currentPath.includes(page));
 
@@ -433,7 +433,7 @@ function checkTopicParameterRequired() {
                     <div>
                         <h2>⚠️ Pilih Topik Terlebih Dahulu</h2>
                         <p style="margin-top: 1rem; color: #666;">Silakan pilih topik dari menu Beranda atau navigasi untuk mengakses halaman ini.</p>
-                        <a href="./beranda.html" style="margin-top: 1.5rem; display: inline-block; padding: 0.75rem 1.5rem; background-color: #2e7d32; color: white; text-decoration: none; border-radius: 4px; cursor: pointer;">
+                        <a href="./beranda.php" style="margin-top: 1.5rem; display: inline-block; padding: 0.75rem 1.5rem; background-color: #2e7d32; color: white; text-decoration: none; border-radius: 4px; cursor: pointer;">
                             Kembali ke Beranda
                         </a>
                     </div>
@@ -532,21 +532,21 @@ document.addEventListener('DOMContentLoaded', () => {
     checkTopicParameterRequired();
 
     // Load topic-specific script if on module page
-    if (window.location.pathname.includes('modul.html') ||
-        window.location.pathname.includes('start-praktikum.html') ||
-        window.location.pathname.includes('kelompok.html') ||
-        window.location.pathname.includes('praktikum.html')) {
+    if (window.location.pathname.includes('modul.php') ||
+        window.location.pathname.includes('start-praktikum.php') ||
+        window.location.pathname.includes('kelompok.php') ||
+        window.location.pathname.includes('praktikum.php')) {
         loadTopicScript();
     }
 
-    if (window.location.pathname.includes('beranda.html')) {
+    if (window.location.pathname.includes('beranda.php')) {
         renderProgress();
-    } else if (window.location.pathname.includes('topik.html') || window.location.pathname.includes('start-praktikum.html') || window.location.pathname.includes('modul.html')) {
+    } else if (window.location.pathname.includes('topik.php') || window.location.pathname.includes('start-praktikum.php') || window.location.pathname.includes('modul.php')) {
         renderTopicContent();
-        if (window.location.pathname.includes('modul.html')) {
+        if (window.location.pathname.includes('modul.php')) {
             renderModulContent('modul');
         }
-    } else if (window.location.pathname.includes('profile.html')) {
+    } else if (window.location.pathname.includes('profile.php')) {
         renderProfile();
     }
 });// Add to your main.js file
@@ -753,7 +753,7 @@ function editTopicGuru(topicId, kelas, subject) {
 
 function penilaianTopicGuru(topicId, topicTitle) {
     // Redirect ke halaman penilaian dengan parameter topik
-    window.location.href = `./penilaian-guru.html?topic=${topicId}`;
+    window.location.href = `./penilaian-guru.php?topic=${topicId}`;
 }
 
 function createNewTopicGuru() {
@@ -764,8 +764,8 @@ function createNewTopicGuru() {
 // Initialize guru dashboard when DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
     // Check if we're on guru dashboard page
-    if (window.location.pathname.includes('beranda-guru.html') ||
-        window.location.pathname.includes('dashboard-guru.html')) {
+    if (window.location.pathname.includes('beranda-guru.php') ||
+        window.location.pathname.includes('dashboard-guru.php')) {
         renderTopicsGuru('all');
     }
 });

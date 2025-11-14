@@ -71,7 +71,7 @@ const asamBasaContent = {
         const topicId = urlParams.get('topic');
 
         // Only render if topic parameter is asam-basa or if we're on a page that needs it
-        if (topicId === 'asam-basa' || window.location.pathname.includes('modul.html') && topicId === 'asam-basa') {
+        if (topicId === 'asam-basa' || window.location.pathname.includes('modul.php') && topicId === 'asam-basa') {
             this.setupModuleHandlers();
         }
     },

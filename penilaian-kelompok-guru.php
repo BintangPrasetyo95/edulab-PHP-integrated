@@ -494,7 +494,7 @@
                 <div class="profile-dropdown" id="profile-dropdown">
                     <p>Profil</p>
                     <p>Pengaturan</p>
-                    <p onclick="window.location.href='./index.html'" class="logout">Log Out</p>
+                    <p onclick="window.location.href='./index.php'" class="logout">Log Out</p>
                 </div>
             </div>
         </div>

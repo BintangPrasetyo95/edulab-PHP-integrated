@@ -9,430 +9,430 @@
     <link rel="stylesheet" href="./assets/style.css">
     <link rel="shortcut icon" href="./assets/images/Logo.png" type="image/x-icon">
     <style>
-        /* Remove register-related styles, keep only login styles */
+    /* Remove register-related styles, keep only login styles */
+    .auth-main-container {
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+        height: 500px;
+        perspective: 1000px;
+    }
+
+    .auth-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    .login-container {
+        z-index: 2;
+    }
+
+    .auth-card {
+        padding: 3rem 2.5rem;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .auth-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .auth-header img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 8px;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .auth-header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+    }
+
+    .auth-header p {
+        color: #666;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 2px solid rgba(102, 126, 234, 0.2);
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-family: 'Montserrat', sans-serif;
+        background: rgba(255, 255, 255, 0.9);
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .password-group {
+        position: relative;
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #666;
+        font-size: 1.1rem;
+        padding: 0.25rem;
+    }
+
+    .auth-btn {
+        width: 100%;
+        padding: 1.2rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        margin-bottom: 1.5rem;
+    }
+
+    .auth-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+    }
+
+    .auth-toggle {
+        text-align: center;
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .auth-toggle a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .auth-toggle a:hover {
+        color: #764ba2;
+    }
+
+    .auth-page {
+        min-height: 100vh;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .message {
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        display: none;
+    }
+
+    .error-message {
+        background: rgba(244, 67, 54, 0.1);
+        color: #d32f2f;
+        border-left: 4px solid #d32f2f;
+    }
+
+    .success-message {
+        background: rgba(76, 175, 80, 0.1);
+        color: #2e7d32;
+        border-left: 4px solid #2e7d32;
+    }
+
+    /* Background styling from original CSS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 118, 117, 0.15) 0%, transparent 50%);
+        z-index: -1;
+    }
+
+    .bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(30px);
+        opacity: 0.2;
+        z-index: -1;
+    }
+
+    .circle1 {
+        width: 250px;
+        height: 250px;
+        background: rgba(21, 101, 192, 0.3);
+        top: 10%;
+        left: 5%;
+    }
+
+    .circle2 {
+        width: 180px;
+        height: 180px;
+        background: rgba(46, 125, 50, 0.3);
+        bottom: 20%;
+        right: 10%;
+    }
+
+    /* Tablet responsiveness */
+    @media (max-width: 1024px) {
         .auth-main-container {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto;
-            height: 500px;
-            perspective: 1000px;
+            max-width: 420px;
+            height: min(580px, 85vh);
+            margin: 0 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .auth-main-container {
+            max-width: 400px;
+            height: min(550px, 80vh);
+            margin: 0 1rem;
         }
 
         .auth-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .login-container {
-            z-index: 2;
+            border-radius: 20px;
         }
 
         .auth-card {
-            padding: 3rem 2.5rem;
-            text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 2rem 1.5rem;
         }
 
         .auth-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .auth-header img {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 8px;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
         }
 
         .auth-header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
         }
 
         .auth-header p {
-            color: #666;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+            margin-bottom: 1rem;
         }
 
         .form-group input,
         .form-group select {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            border: 2px solid rgba(102, 126, 234, 0.2);
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-family: 'Montserrat', sans-serif;
-            background: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .password-group {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #666;
-            font-size: 1.1rem;
-            padding: 0.25rem;
+            padding: 0.9rem 1rem;
+            font-size: 0.9rem;
         }
 
         .auth-btn {
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            margin-bottom: 1.5rem;
+            padding: 1.1rem;
+            font-size: 0.95rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .auth-page {
+            padding: 0.5rem;
         }
 
-        .auth-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        .auth-main-container {
+            max-width: calc(100vw - 1rem);
+            height: min(85vh, 500px);
+            margin: 0;
+        }
+
+        .auth-container {
+            border-radius: 16px;
+        }
+
+        .auth-card {
+            padding: 1.5rem 1.25rem;
+        }
+
+        .auth-header {
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .auth-header img {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .auth-header h1 {
+            font-size: 1.5rem;
+        }
+
+        .auth-header p {
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .form-group {
+            margin-bottom: 0.9rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.8rem 1rem;
+            font-size: 0.85rem;
+            border-radius: 10px;
+        }
+
+        .auth-btn {
+            padding: 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
         .auth-toggle {
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            line-height: 1.4;
         }
 
-        .auth-toggle a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .password-toggle {
+            font-size: 1rem;
+            right: 0.8rem;
         }
+    }
 
-        .auth-toggle a:hover {
-            color: #764ba2;
+    @media (max-width: 360px) {
+        .auth-main-container {
+            max-width: calc(100vw - 0.5rem);
+            height: min(90vh, 460px);
+            margin: 0;
         }
 
         .auth-page {
-            min-height: 100vh;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
+            padding: 0.25rem;
+        }
+
+        .auth-card {
+            padding: 1.25rem 0.9rem;
+        }
+
+        .auth-header h1 {
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.7rem 0.9rem;
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Very small screens and landscape phones */
+    @media (max-height: 600px) and (max-width: 768px) {
+        .auth-main-container {
+            height: 95vh;
             margin: 0;
         }
 
-        .message {
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
+        .auth-page {
+            padding: 0.25rem;
+        }
+
+        .auth-card {
+            padding: 1rem;
+        }
+
+        .auth-header {
             margin-bottom: 1rem;
-            font-size: 0.9rem;
-            display: none;
         }
 
-        .error-message {
-            background: rgba(244, 67, 54, 0.1);
-            color: #d32f2f;
-            border-left: 4px solid #d32f2f;
+        .auth-header img {
+            width: 2.5rem;
+            height: 2.5rem;
         }
 
-        .success-message {
-            background: rgba(76, 175, 80, 0.1);
-            color: #2e7d32;
-            border-left: 4px solid #2e7d32;
+        .form-group {
+            margin-bottom: 0.7rem;
         }
-
-        /* Background styling from original CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 118, 117, 0.15) 0%, transparent 50%);
-            z-index: -1;
-        }
-
-        .bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(30px);
-            opacity: 0.2;
-            z-index: -1;
-        }
-
-        .circle1 {
-            width: 250px;
-            height: 250px;
-            background: rgba(21, 101, 192, 0.3);
-            top: 10%;
-            left: 5%;
-        }
-
-        .circle2 {
-            width: 180px;
-            height: 180px;
-            background: rgba(46, 125, 50, 0.3);
-            bottom: 20%;
-            right: 10%;
-        }
-
-        /* Tablet responsiveness */
-        @media (max-width: 1024px) {
-            .auth-main-container {
-                max-width: 420px;
-                height: min(580px, 85vh);
-                margin: 0 1.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .auth-main-container {
-                max-width: 400px;
-                height: min(550px, 80vh);
-                margin: 0 1rem;
-            }
-
-            .auth-container {
-                border-radius: 20px;
-            }
-
-            .auth-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .auth-header {
-                margin-bottom: 1.5rem;
-            }
-
-            .auth-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .auth-header p {
-                font-size: 0.95rem;
-            }
-
-            .form-group {
-                margin-bottom: 1rem;
-            }
-
-            .form-group input,
-            .form-group select {
-                padding: 0.9rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            .auth-btn {
-                padding: 1.1rem;
-                font-size: 0.95rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .auth-page {
-                padding: 0.5rem;
-            }
-
-            .auth-main-container {
-                max-width: calc(100vw - 1rem);
-                height: min(85vh, 500px);
-                margin: 0;
-            }
-
-            .auth-container {
-                border-radius: 16px;
-            }
-
-            .auth-card {
-                padding: 1.5rem 1.25rem;
-            }
-
-            .auth-header {
-                gap: 0.5rem;
-                margin-bottom: 1.25rem;
-            }
-
-            .auth-header img {
-                width: 3rem;
-                height: 3rem;
-            }
-
-            .auth-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .auth-header p {
-                font-size: 0.85rem;
-                line-height: 1.4;
-            }
-
-            .form-group {
-                margin-bottom: 0.9rem;
-            }
-
-            .form-group label {
-                font-size: 0.9rem;
-                margin-bottom: 0.4rem;
-            }
-
-            .form-group input,
-            .form-group select {
-                padding: 0.8rem 1rem;
-                font-size: 0.85rem;
-                border-radius: 10px;
-            }
-
-            .auth-btn {
-                padding: 1rem;
-                font-size: 0.9rem;
-                margin-bottom: 1rem;
-            }
-
-            .auth-toggle {
-                font-size: 0.8rem;
-                line-height: 1.4;
-            }
-
-            .password-toggle {
-                font-size: 1rem;
-                right: 0.8rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .auth-main-container {
-                max-width: calc(100vw - 0.5rem);
-                height: min(90vh, 460px);
-                margin: 0;
-            }
-
-            .auth-page {
-                padding: 0.25rem;
-            }
-
-            .auth-card {
-                padding: 1.25rem 0.9rem;
-            }
-
-            .auth-header h1 {
-                font-size: 1.3rem;
-            }
-
-            .form-group {
-                margin-bottom: 0.8rem;
-            }
-
-            .form-group input,
-            .form-group select {
-                padding: 0.7rem 0.9rem;
-                font-size: 0.8rem;
-            }
-        }
-
-        /* Very small screens and landscape phones */
-        @media (max-height: 600px) and (max-width: 768px) {
-            .auth-main-container {
-                height: 95vh;
-                margin: 0;
-            }
-
-            .auth-page {
-                padding: 0.25rem;
-            }
-
-            .auth-card {
-                padding: 1rem;
-            }
-
-            .auth-header {
-                margin-bottom: 1rem;
-            }
-
-            .auth-header img {
-                width: 2.5rem;
-                height: 2.5rem;
-            }
-
-            .form-group {
-                margin-bottom: 0.7rem;
-            }
-        }
+    }
     </style>
 </head>
 
@@ -476,102 +476,102 @@
     </div>
 
     <script>
-        function togglePassword(inputId) {
-            const input = document.getElementById(inputId);
-            const button = input.nextElementSibling;
+    function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const button = input.nextElementSibling;
 
-            if (input.type === 'password') {
-                input.type = 'text';
-                button.textContent = '🙈';
-            } else {
-                input.type = 'password';
-                button.textContent = '👁️';
-            }
+        if (input.type === 'password') {
+            input.type = 'text';
+            button.textContent = '🙈';
+        } else {
+            input.type = 'password';
+            button.textContent = '👁️';
         }
+    }
 
-        function clearMessages() {
-            const messages = document.querySelectorAll('.message');
-            messages.forEach(msg => {
-                msg.style.display = 'none';
-                msg.textContent = '';
-            });
-        }
-
-        function showMessage(elementId, message, isError = true) {
-            const element = document.getElementById(elementId);
-            element.textContent = message;
-            element.style.display = 'block';
-
-            // Auto hide after 5 seconds
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 5000);
-        }
-
-        function setButtonLoading(buttonId, isLoading) {
-            const button = document.getElementById(buttonId);
-            if (isLoading) {
-                button.disabled = true;
-                button.style.opacity = '0.7';
-                button.textContent = 'Memproses...';
-            } else {
-                button.disabled = false;
-                button.style.opacity = '1';
-                button.textContent = 'Masuk';
-            }
-        }
-
-        function validateNIS(nis) {
-            return nis.length >= 1 && /^\d+$/.test(nis);
-        }
-
-        function validatePassword(password) {
-            return password.length >= 4;
-        }
-
-        // Login form handler
-        document.getElementById('loginForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            clearMessages();
-
-            const nis = document.getElementById('loginNis').value.trim();
-            const password = document.getElementById('loginPassword').value;
-
-            // Basic validation
-            if (!validateNIS(nis) && (nis !== 'sayaguru' && password !== '6969')) {
-                showMessage('loginError', 'NIS harus berupa angka dan minimal 1 digit');
-                return;
-            }
-
-            if (!validatePassword(password)) {
-                showMessage('loginError', 'Kata sandi minimal 4 karakter');
-                return;
-            }
-
-            setButtonLoading('loginBtn', true);
-
-            // Simulate login process
-            setTimeout(() => {
-                setButtonLoading('loginBtn', false);
-
-                // Check for special guru account
-                if (nis === 'sayaguru' && password === '6969') {
-                    showMessage('loginSuccess', 'Login sebagai Guru berhasil! Mengalihkan...', false);
-                    setTimeout(() => {
-                        window.location.href = 'beranda-guru.html';
-                    }, 1500);
-                }
-                // Regular student login
-                else if (validateNIS(nis) && validatePassword(password)) {
-                    showMessage('loginSuccess', 'Login berhasil! Mengalihkan...', false);
-                    setTimeout(() => {
-                        window.location.href = 'beranda.html';
-                    }, 1500);
-                } else {
-                    showMessage('loginError', 'NIS atau kata sandi salah. Silakan coba lagi.');
-                }
-            }, 1500);
+    function clearMessages() {
+        const messages = document.querySelectorAll('.message');
+        messages.forEach(msg => {
+            msg.style.display = 'none';
+            msg.textContent = '';
         });
+    }
+
+    function showMessage(elementId, message, isError = true) {
+        const element = document.getElementById(elementId);
+        element.textContent = message;
+        element.style.display = 'block';
+
+        // Auto hide after 5 seconds
+        setTimeout(() => {
+            element.style.display = 'none';
+        }, 5000);
+    }
+
+    function setButtonLoading(buttonId, isLoading) {
+        const button = document.getElementById(buttonId);
+        if (isLoading) {
+            button.disabled = true;
+            button.style.opacity = '0.7';
+            button.textContent = 'Memproses...';
+        } else {
+            button.disabled = false;
+            button.style.opacity = '1';
+            button.textContent = 'Masuk';
+        }
+    }
+
+    function validateNIS(nis) {
+        return nis.length >= 1 && /^\d+$/.test(nis);
+    }
+
+    function validatePassword(password) {
+        return password.length >= 4;
+    }
+
+    // Login form handler
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        clearMessages();
+
+        const nis = document.getElementById('loginNis').value.trim();
+        const password = document.getElementById('loginPassword').value;
+
+        // Basic validation
+        if (!validateNIS(nis) && (nis !== 'sayaguru' && password !== '6969')) {
+            showMessage('loginError', 'NIS harus berupa angka dan minimal 1 digit');
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            showMessage('loginError', 'Kata sandi minimal 4 karakter');
+            return;
+        }
+
+        setButtonLoading('loginBtn', true);
+
+        // Simulate login process
+        setTimeout(() => {
+            setButtonLoading('loginBtn', false);
+
+            // Check for special guru account
+            if (nis === 'sayaguru' && password === '6969') {
+                showMessage('loginSuccess', 'Login sebagai Guru berhasil! Mengalihkan...', false);
+                setTimeout(() => {
+                    window.location.href = 'beranda-guru.php';
+                }, 1500);
+            }
+            // Regular student login
+            else if (validateNIS(nis) && validatePassword(password)) {
+                showMessage('loginSuccess', 'Login berhasil! Mengalihkan...', false);
+                setTimeout(() => {
+                    window.location.href = 'beranda.php';
+                }, 1500);
+            } else {
+                showMessage('loginError', 'NIS atau kata sandi salah. Silakan coba lagi.');
+            }
+        }, 1500);
+    });
     </script>
 </body>
 

@@ -298,8 +298,8 @@
         <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
         <nav class="navbar">
             <a href="./beranda-guru.php" class="normal">Beranda</a>
-            <a href="./penilaian-guru.html" class="active">Penilaian Individu</a>
-            <a href="./penilaian-kelompok-guru.html" class="normal">Penilaian Kelompok</a>
+            <a href="./penilaian-guru.php" class="active">Penilaian Individu</a>
+            <a href="./penilaian-kelompok-guru.php" class="normal">Penilaian Kelompok</a>
         </nav>
         <div class="header-right">
             <div class="notification" onclick="toggleNotification()">
@@ -314,7 +314,7 @@
                 <div class="profile-dropdown" id="profile-dropdown">
                     <p>Profil</p>
                     <p>Pengaturan</p>
-                    <p onclick="window.location.href='./index.html'" class="logout">Log Out</p>
+                    <p onclick="window.location.href='./index.php'" class="logout">Log Out</p>
                 </div>
             </div>
         </div>

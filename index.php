@@ -10,8 +10,8 @@
     <title>Edulab</title>
 
     <script>
-        document.documentElement.classList.remove('no-js');
-        document.documentElement.classList.add('js');
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
     </script>
 
     <!-- Fonts & CSS aligned with other pages -->
@@ -52,7 +52,7 @@
 
                 <div class="s-header__block">
                     <div class="s-header__logo">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="index.php">
                             <img src="assets/images/logo.png" alt="Edulab">
                         </a>
                     </div>
@@ -126,7 +126,7 @@
                         </h1>
 
                         <div class="s-intro__content-buttons">
-                            <a href="login.html" class="btn btn--stroke s-intro__content-btn smoothscroll">Belajar
+                            <a href="login.php" class="btn btn--stroke s-intro__content-btn smoothscroll">Belajar
                                 Sekarang!</a>
                         </div>
 

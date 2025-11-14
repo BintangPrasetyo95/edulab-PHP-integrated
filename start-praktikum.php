@@ -156,7 +156,7 @@
             <div class="praktikum-start">
                 <h2>Mulai Praktikum</h2>
                 <p>Silakan klik tombol di bawah ini untuk memulai praktikum.</p>
-                <button onclick="window.location.href='./praktikum.html'" class="praktikum normal">
+                <button onclick="window.location.href='./praktikum.php'" class="praktikum normal">
                     <span>🧪</span> Mulai Praktikum
                 </button>
             </div>
