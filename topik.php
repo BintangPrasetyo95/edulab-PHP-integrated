@@ -163,6 +163,31 @@
     </footer>
 
     <script src="./assets/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentTopic = urlParams.get('topic') || 'asam-basa';
+
+        // Update navbar links
+        document.querySelectorAll('.navbar a').forEach(link => {
+            if (link.href.includes('modul.php') || link.href.includes('start-praktikum.php')) {
+                link.href += `?topic=${currentTopic}`;
+            }
+        });
+
+        // Update quick buttons
+        document.querySelectorAll('#quick-buttons button').forEach(button => {
+            if (button.classList.contains('pre-lab')) {
+                button.onclick = () => window.location.href = `./modul.php?topic=${currentTopic}`;
+            } else if (button.classList.contains('quiz')) {
+                button.onclick = () => window.location.href = `./quiz.php?topic=${currentTopic}`;
+            } else if (button.classList.contains('praktikum')) {
+                button.onclick = () => window.location.href =
+                    `./start-praktikum.php?topic=${currentTopic}`;
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>

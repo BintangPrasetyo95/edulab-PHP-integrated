@@ -135,7 +135,7 @@
     <main>
         <div class="main-card">
             <div class="header-boxes">
-                <div class="header-box modul" onclick="renderModulContent('modul')">
+                <div class="header-box modul active" onclick="renderModulContent('modul')">
                     <h2>Modul</h2>
                 </div>
                 <div class="header-box video" onclick="renderModulContent('video')">
@@ -164,6 +164,72 @@
     <script src="./assets/javascript/energi.js"></script>
     <script src="./assets/javascript/polimer.js"></script>
     <script src="./assets/javascript/listrik.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentTopic = urlParams.get('topic');
+
+        // Set default topic to 'asam-basa' if not provided
+        if (!currentTopic) {
+            currentTopic = 'asam-basa';
+            window.history.replaceState({}, '', `?topic=${currentTopic}`);
+        }
+
+        // Update navbar links
+        document.querySelectorAll('.navbar a').forEach(link => {
+            if (link.href.includes('modul.php') || link.href.includes('start-praktikum.php')) {
+                link.href += `?topic=${currentTopic}`;
+            }
+        });
+
+        // Function to render content dynamically
+        const contentCard = document.getElementById('content-card');
+
+        function renderContent(type) {
+            if (!contentCard) return;
+
+            if (type === 'modul') {
+                contentCard.innerHTML = `
+                    <embed src="./data/MODUL_${currentTopic.toUpperCase()}.pdf" type="application/pdf" width="100%" height="600px" style="border-radius: 8px;">
+                `;
+            } else if (type === 'video') {
+                contentCard.innerHTML = `
+                    <video controls width="100%" height="400px" style="border-radius: 8px;">
+                        <source src="./assets/videos/Video${currentTopic.charAt(0).toUpperCase() + currentTopic.slice(1)}.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+            }
+        }
+
+        // Set default content to module
+        renderContent('modul');
+
+        // Add event listeners to header boxes
+        const modulBtn = document.querySelector('.header-box.modul');
+        const videoBtn = document.querySelector('.header-box.video');
+
+        if (modulBtn) {
+            modulBtn.addEventListener('click', () => {
+                renderContent('modul');
+                updateActiveHeaderBox('modul');
+            });
+        }
+
+        if (videoBtn) {
+            videoBtn.addEventListener('click', () => {
+                renderContent('video');
+                updateActiveHeaderBox('video');
+            });
+        }
+
+        function updateActiveHeaderBox(type) {
+            const headerBoxes = document.querySelectorAll('.header-box');
+            headerBoxes.forEach(box => box.classList.remove('active'));
+            document.querySelector(`.header-box.${type}`)?.classList.add('active');
+        }
+    });
+    </script>
 </body>
 
 </html>

@@ -365,6 +365,25 @@
     <script src="./assets/javascript/energi.js"></script>
     <script src="./assets/javascript/polimer.js"></script>
     <script src="./assets/javascript/listrik.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentTopic = urlParams.get('topic');
+
+        // Set default topic to 'asam-basa' if not provided
+        if (!currentTopic) {
+            currentTopic = 'asam-basa';
+            window.history.replaceState({}, '', `?topic=${currentTopic}`);
+        }
+
+        // Update navbar links
+        document.querySelectorAll('.navbar a').forEach(link => {
+            if (link.href.includes('modul.php') || link.href.includes('start-praktikum.php')) {
+                link.href += `?topic=${currentTopic}`;
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>

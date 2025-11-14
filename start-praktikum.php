@@ -192,6 +192,24 @@
     <script src="./assets/javascript/energi.js"></script>
     <script src="./assets/javascript/polimer.js"></script>
     <script src="./assets/javascript/listrik.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentTopic = urlParams.get('topic') || 'asam-basa';
+
+            // Update navbar links
+            document.querySelectorAll('.navbar a').forEach(link => {
+                if (link.href.includes('modul.php') || link.href.includes('start-praktikum.php')) {
+                    link.href += `?topic=${currentTopic}`;
+                }
+            });
+
+            // Update quick buttons
+            document.querySelectorAll('.praktikum-start button').forEach(button => {
+                button.onclick = () => window.location.href = `./praktikum.php?topic=${currentTopic}`;
+            });
+        });
+    </script>
 </body>
 
 </html>
